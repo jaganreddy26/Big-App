@@ -1,0 +1,91 @@
+<div fxLayout="row" fxLayoutAlign="space-between center" >
+ <h2 >Over View Data</h2>
+        <mat-form-field appearance="outline" fxFlex="30">
+            <mat-label>Search</mat-label>
+            <input
+              matInput
+              placeholder="Search"
+              [(ngModel)]="searchKey"
+            />
+            <button mat-button *ngIf="searchKey" matSuffix mat-icon-button aria-label="Clear" (click)="searchKey=''">
+              <mat-icon>close</mat-icon>
+            </button>
+        </mat-form-field>
+
+
+
+  </div>
+<section class="">
+
+  <div class="container">
+
+    <table>
+      <thead>
+        <tr class="header">
+            <th >
+                Image
+                 <div>Image </div>
+               </th>
+          <th  [class.active]="order === 'login'"
+          (click)="setOrder('login')">
+           Login
+            <div>Login <span [hidden]="reverse">▼</span
+              ><span [hidden]="!reverse">▲</span></div>
+          </th>
+          <th [class.active]="order === 'type'"
+          (click)="setOrder('type')">
+            Type
+             <div>Type <span [hidden]="reverse">▼</span
+              ><span [hidden]="!reverse">▲</span></div>
+           </th>
+          <th  [class.active]="order === 'organizations_url'"
+          (click)="setOrder('organizations_url')">
+            Organizations url
+            <div>Organizations Url <span [hidden]="reverse">▼</span
+              ><span [hidden]="!reverse">▲</span></div>
+          </th>
+          <th [class.active]="order === 'repos_url'"
+          (click)="setOrder('repos_url')">
+            Repos Url
+            <div>Repos Url <span [hidden]="reverse">▼</span
+              ><span [hidden]="!reverse">▲</span></div>
+          </th>
+          <th [class.active]="order === 'url'"
+          (click)="setOrder('url')">
+             Url
+            <div>Url <span [hidden]="reverse">▼</span
+              ><span [hidden]="!reverse">▲</span></div>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of data | filter : ['login' ,'type','organizations_url','repos_url','url']: searchKey | paginate: { itemsPerPage: selectRow, currentPage: p } | orderBy: order:reverse:'case-insensitive'">
+            <td>
+            <img class="img" src="{{item.avatar_url}}">
+            </td>
+          <td>{{item.login}}</td>
+          <td>{{item.type}}</td>
+          <td>{{item.organizations_url}}</td>
+          <td>{{item.repos_url}}</td>
+          <td>{{item.url}}</td>
+
+        </tr>
+
+      </tbody>
+    </table>
+  
+  </div>
+</section>
+<div fxLayoutAlign="end center" >
+  <mat-form-field appearance="outline" >
+      <select matNativeControl [(ngModel)]="selectRow">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="15">15</option>
+          <option value="20">20</option>
+        </select>
+   
+  </mat-form-field>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+
