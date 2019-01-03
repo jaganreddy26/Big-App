@@ -22,6 +22,7 @@
     <table>
       <thead>
         <tr class="header">
+          <th></th>
             <th >
                 Image
                  <div>Image </div>
@@ -60,7 +61,9 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of data | filter : ['login' ,'type','organizations_url','repos_url','url']: searchKey | paginate: { itemsPerPage: selectRow, currentPage: p } | orderBy: order:reverse:'case-insensitive'">
-            <td>
+          <td>  <mat-checkbox class="example-margin" [(ngModel)]="item.check"></mat-checkbox></td>
+            <td> 
+              
             <img class="img" src="{{item.avatar_url}}">
             </td>
           <td>{{item.login}}</td>

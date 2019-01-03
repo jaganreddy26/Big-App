@@ -21,6 +21,7 @@ import {MatIconModule} from '@angular/material/icon';
 import {NgxPaginationModule} from 'ngx-pagination';
 import { OrderModule } from 'ngx-order-pipe';
 import {MatSelectModule} from '@angular/material/select';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 
 
@@ -41,7 +42,10 @@ import {MatSelectModule} from '@angular/material/select';
     ChartModule,
     HttpClientModule,
     FlexLayoutModule,
-    MatInputModule,MatCardModule,FormsModule,MatButtonModule,MatIconModule,NgxPaginationModule,OrderModule,MatSelectModule
+    MatInputModule,MatCardModule
+    ,FormsModule,MatButtonModule,
+    MatIconModule,NgxPaginationModule,
+    OrderModule,MatSelectModule,MatCheckboxModule
   ],
   providers: [DataTableService],
   bootstrap: [AppComponent]
